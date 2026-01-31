@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jewels of Asia Barrhead – £5 Off First Order</title>
-  <meta name="description" content="£5 off your first order from Jewels of Asia Barrhead. Order via WhatsApp, call, or view the full menu." />
+  <meta name="description" content="£5 off your first order from Jewels of Asia Barrhead. Order online or call to order." />
 
   <style>
     :root{
@@ -87,6 +87,7 @@
       text-align:center;
     }
 
+    /* ALL BUTTONS GOLD */
     .ctaRow{
       display:grid;
       grid-template-columns:1fr;
@@ -100,17 +101,13 @@
       justify-content:center;
       padding:14px;
       border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(180deg, var(--gold1), var(--gold2));
+      color:var(--goldText);
       font-weight:900;
       font-size:16px;
       text-align:center;
-    }
-
-    .btnPrimary{
-      background:linear-gradient(180deg, var(--gold1), var(--gold2));
-      border-color:rgba(255,255,255,.25);
-      color:var(--goldText);
+      box-shadow:0 8px 18px rgba(0,0,0,.25);
     }
 
     .fine{
@@ -141,6 +138,7 @@
       font-weight:900;
       display:flex;
       justify-content:space-between;
+      color:var(--text);
     }
 
     summary::-webkit-details-marker{display:none}
@@ -164,6 +162,25 @@
       line-height:1.5;
     }
 
+    /* Highlighted clickable phones */
+    .phoneWrap{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:8px;
+      margin-bottom:6px;
+    }
+    .phonePill{
+      display:inline-block;
+      padding:10px 12px;
+      border-radius:999px;
+      background:linear-gradient(180deg, var(--gold1), var(--gold2));
+      color:var(--goldText);
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 8px 18px rgba(0,0,0,.25);
+    }
+
     .footer{
       padding:14px;
       border-top:1px solid var(--line);
@@ -174,7 +191,7 @@
     }
 
     @media (min-width:560px){
-      .ctaRow{grid-template-columns:1fr 1fr 1fr}
+      .ctaRow{grid-template-columns:1fr 1fr}
     }
   </style>
 </head>
@@ -189,29 +206,25 @@
         </div>
 
         <h1>£5 OFF your first order</h1>
-        <p class="sub">Order fast via WhatsApp, call us, or browse the full menu.</p>
+        <p class="sub">Order online in seconds, or call to place your order.</p>
 
         <div class="offer">
           Use code <strong>FIRST5</strong> · Limited time · Local customers only
         </div>
 
         <div class="ctaRow">
-          <a class="btn btnPrimary"
-             href="https://wa.me/447000000000?text=Hi%2C%20I%E2%80%99d%20like%20to%20place%20an%20order%20from%20Jewels%20of%20Asia%20Barrhead.%20I%E2%80%99m%20using%20the%20%C2%A35%20off%20flyer%20offer."
-             target="_blank">
-            Order Now (WhatsApp)
+          <a class="btn"
+             href="https://www.jewelsofasia.co.uk/order-now"
+             target="_blank" rel="noopener">
+            Order Online
           </a>
 
           <a class="btn" href="tel:01418818125">
-            Call 0141 881 8125
-          </a>
-
-          <a class="btn" href="https://www.jewelsofasia.co.uk" target="_blank">
-            View Full Menu
+            Call Now
           </a>
         </div>
 
-        <p class="fine">If you scanned from a flyer, mention the offer when ordering.</p>
+        <p class="fine">Tip: If you scanned from a flyer, mention the offer when ordering.</p>
       </div>
 
       <div class="body">
@@ -247,8 +260,11 @@
         </details>
 
         <div class="info">
-          <strong>Contact</strong><br>
-          📞 0141 881 8125 / 0141 881 8189<br><br>
+          <strong>Contact</strong>
+          <div class="phoneWrap">
+            <a class="phonePill" href="tel:01418818125">Call 0141 881 8125</a>
+            <a class="phonePill" href="tel:01418818189">Call 0141 881 8189</a>
+          </div>
 
           <strong>Address</strong><br>
           34 Glasgow Road, Barrhead<br><br>
