@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewels of Asia | Authentic Asian Cuisine in Glasgow</title>
+    <meta name="description" content="Experience the finest Asian cuisine in Glasgow. Order online for delivery or collection. Fresh, authentic flavors from the heart of Asia.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-dark: #1a1a2e;
+            --secondary-red: #c41e3a;
+            --accent-orange: #ff6b35;
+            --light-cream: #f9f7f2;
+            --text-dark: #2d2d2d;
+            --text-light: #ffffff;
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--light-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 0;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .order-btn {
+            background: linear-gradient(135deg, var(--primary-gold), #b89628);
+            color: var(--text-light);
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.85), rgba(26, 26, 46, 0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%232a2a3e" width="1200" height="800"/><circle cx="600" cy="400" r="300" fill="%233a3a4e" opacity="0.3"/><circle cx="400" cy="300" r="150" fill="%234a4a5e" opacity="0.2"/><circle cx="800" cy="500" r="200" fill="%233a3a4e" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1), transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-gold), #b89628);
+            color: var(--text-light);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-gold);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: var(--light-cream);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Menu Preview */
+        .menu-preview {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary-dark), #2a2a4e);
+            color: var(--text-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .menu-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-gold);
+        }
+
+        .menu-item .price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .menu-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: var(--light-cream);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-red));
+            border-radius: 20px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-cream);
+            border-radius: 15px;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            opacity: 0.9;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Jewels of Asia</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#order" class="order-btn">Order Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Authentic Asian Cuisine in the Heart of Glasgow</h1>
+            <p>Experience the rich flavors and aromatic spices of Asia, crafted with passion and served with love. Order online for delivery or collection.</p>
+            <div class="hero-buttons">
+                <a href="#order" class="btn-primary">Order Online</a>
+                <a href="#menu" class="btn-secondary">View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Discover what makes Jewels of Asia special</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🍽️</span>
+                    <h3>Fresh Ingredients</h3>
+                    <p>We source only the freshest, highest quality ingredients to ensure every dish bursts with authentic flavor.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">👨‍🍳</span>
+                    <h3>Expert Chefs</h3>
+                    <p>Our skilled chefs bring years of experience and traditional techniques to create culinary masterpieces.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🚀</span>
+                    <h3>Fast Delivery</h3>
+                    <p>Hot, fresh food delivered to your doorstep promptly. Enjoy restaurant quality at home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview -->
+    <section class="menu-preview" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Dishes</h2>
+                <p>A taste of our most loved creations</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Chicken Tikka Masala</h3>
+                    <span class="price">£12.95</span>
+                    <p>Tender chicken pieces in a creamy tomato-based curry sauce with aromatic spices.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Lamb Biryani</h3>
+                    <span class="price">£14.95</span>
+                    <p>Fragrant basmati rice cooked with succulent lamb, saffron, and traditional spices.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Pad Thai</h3>
+                    <span class="price">£11.95</span>
+                    <p>Classic Thai stir-fried rice noodles with shrimp, peanuts, bean sprouts, and tangy tamarind sauce.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Beef Rendang</h3>
+                    <span class="price">£13.95</span>
+                    <p>Slow-cooked beef in rich coconut milk and Indonesian spices until tender and flavorful.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Welcome to Jewels of Asia, where culinary tradition meets modern excellence. Established in the heart of Glasgow, we've been serving authentic Asian cuisine that celebrates the diverse flavors of the continent.</p>
+                    <p>Our journey began with a simple mission: to bring the genuine tastes of Asia to Scotland. Every dish is prepared with care, using time-honored recipes passed down through generations, combined with the finest local ingredients.</p>
+                    <p>Whether you're dining with us or enjoying our food at home, we promise an unforgettable culinary experience that transports you to the vibrant streets of Asia.</p>
+                </div>
+                <div class="about-image">
+                    🍜
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>We'd love to hear from you</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="contact-icon">📍</span>
+                    <h3>Location</h3>
+                    <p>Glasgow, Scotland<br>United Kingdom</p>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-icon">📞</span>
+                    <h3>Phone</h3>
+                    <p>+44 141 123 4567<br>Call us for reservations</p>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-icon">⏰</span>
+                    <h3>Opening Hours</h3>
+                    <p>Mon-Sun: 12:00 PM - 10:00 PM<br>Delivery available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Jewels of Asia</h3>
+                    <p>Authentic Asian cuisine crafted with passion and served with love in the heart of Glasgow.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#menu">Menu</a>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Jewels of Asia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards and menu items
+        document.querySelectorAll('.feature-card, .menu-item, .contact-info').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
